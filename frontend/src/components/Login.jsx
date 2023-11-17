@@ -1,6 +1,11 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate()
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+    navigate('/home')
+  }
   return (
     <main className='absolute inset-0 flex font-inter'>
       <section className='flex h-full grow md:w-[40%] flex-col items-center justify-center gap-8 px-2 md:px-5'>
@@ -12,7 +17,7 @@ const Login = () => {
               Printing Service
             </p>
           </div>
-        <button className='w-full rounded-full bg-primary-blue p-4 text-xl text-white'>
+        <button className='w-full rounded-full bg-primary-blue p-4 text-xl text-white' onClick={handleLogin}>
           Login with HCMUT
         </button>
       </section>
