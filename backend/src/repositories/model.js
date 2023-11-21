@@ -88,5 +88,5 @@ const printingHistory = new mongoose.Schema({
 let Printer = mongoose.model("Printer", printSchema);
 let User = mongoose.model("User", userSchema);
 let FileRecord = mongoose.model("FileRecord", fileRecord);
-let FileHistory = mongoose.model("FileHistory", fileRecord);
+let FileHistory = mongoose.model("FileHistory", printingHistory);
 module.exports = { Printer, User, FileHistory, FileRecord };

@@ -1,4 +1,4 @@
-const authRepo = require("../controllers/authRepo");
+const authRepo = require("../repositories/authRepo");
 const authService = {
     findOneuser: async(inputn)=>{
             const user = await authRepo.findOnerepo(inputn);
