@@ -1,24 +1,38 @@
-const allowedOrigin = require('./configs/allowedOrigin')
+const express = require("express");
+const cors = require("cors");
+//const cookieParser = require("cookie-parser");
+const app = express();
+const mongoose = require("mongoose");
+var bodyParser = require("body-parser");
+const morgan = require("morgan");
+const dotenv = require("dotenv");
+const userRoute = require("./routes/userRoute");
+const printerRoute = require("./routes/printerRoute");
+const authRoute = require("./routes/authRoute");
 
-const express = require('express')
-const app = express()
+dotenv.config(); // do for .env file
+//CONNECT DATABASE
+mongoose
+    .connect(process.env.MONGODB_URL)  // use .env file
+    .then((success) => console.log("Connect Successfully to MongoDB"))
+    .catch((err) => console.log(err.message));
 
-const cors = require('cors')
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(cors()); // deter from cross origin restriction error
+//app.use(cookieParser());  maybe we can do cookie ?? thui xoa me no di
+app.use(morgan("common")); // khi send API request -> inform in terminal
 
-const PORT = 3500
+// app.get("/api",(req,res)=>{
+//     res.status(200).json("Hello");
+// });
 
-app.use(express.json())
-console.log(allowedOrigin)
+//ROUTE
+app.use("/v1/user", userRoute);
+app.use("/v1/printer", printerRoute);
+app.use("/v1/auth", authRoute);
 
-app.use(
-  cors({
-    credentials: true,
-    origin: allowedOrigin,
-  })
-)
+app.listen(5500, () => {
+    console.log("server is running ...");
+});
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'This is a message from express server!!' })
-})
-
-app.listen(PORT, console.log(`Server running on ${PORT}.`))
+//JWT xac thuc nguoi dung
