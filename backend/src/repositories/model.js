@@ -1,45 +1,47 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     username: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 20,
-        unique: true,
+      type: String,
+      required: true,
+      minlength: 6,
+      maxlength: 20,
+      unique: true,
     },
 
     password: {
-        type: String,
-        required: true,
-        minlength: 6,
+      type: String,
+      required: true,
+      minlength: 6,
     },
 
     balance: {
-        type: Number,
-        default: 10,
+      type: Number,
+      default: 10,
     },
-}, { timestamps: true } // show when it is created and updated 
-);
+  },
+  { timestamps: true } // show when it is created and updated
+)
 
 const printSchema = new mongoose.Schema({
-    brandName: {
-        type: String,
-        required: true
-    },
-    printerModel: {
-        type: String,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-});
+  brandName: {
+    type: String,
+    required: true,
+  },
+  printerModel: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+})
 
 const fileRecord = new mongoose.Schema({
     studentID: [
@@ -88,5 +90,5 @@ const printingHistory = new mongoose.Schema({
 let Printer = mongoose.model("Printer", printSchema);
 let User = mongoose.model("User", userSchema);
 let FileRecord = mongoose.model("FileRecord", fileRecord);
-let FileHistory = mongoose.model("FileHistory", printingHistory);
+let FileHistory = mongoose.model("FileHistory", fileRecord);
 module.exports = { Printer, User, FileHistory, FileRecord };
