@@ -66,18 +66,18 @@ const printingHistory = new mongoose.Schema({
             ref: "Printer",
         },
     ],
-    fileName: [
+    fileID: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "FileRecord",
         },
     ],
-    printingStartTime: {
-        type: String,
+    startTime: {
+        type: Date,
         required: true
     },
-    printingEndTime: {
-        type: String,
+    endTime: {
+        type: Date,
         required: true
     },
     numberOfPage: {
