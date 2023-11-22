@@ -9,7 +9,7 @@ const loggingService = {
     end_print_date,
     page_amount
   ) => {
-    const create_new_log = historyRepo.create_log(
+    const create_new_log = await historyRepo.create_log(
       student_ID,
       printer_ID,
       file_ID,
