@@ -9,13 +9,9 @@ const studentRepo = {
     decrementBalanceByID: async (studentID, amount) => {
         const user = await User.findOne({ studentID });
         // const user = await User.findByID(studentID) ;
-        if (user.balance >= amount) {
-            user.balance -= amount;
-            await user.save();
-            return true;
-        } else {
-            return false;
-        }
+        user.balance -= amount;
+        await user.save();
+        return;
     }
 }
 
