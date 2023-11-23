@@ -17,7 +17,7 @@ const historyRepo = {
       endPrintDate,
       pageAmount
     )
-    const addLogToDatabase = await newLog.save()
+    const addLogToDatabase = await newLog.save() //return a promise
     return addLogToDatabase
   },
 }
