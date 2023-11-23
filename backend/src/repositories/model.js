@@ -44,17 +44,17 @@ const printSchema = new mongoose.Schema({
 })
 
 const fileRecord = new mongoose.Schema({
-  studentID: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+    studentID: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
+    fileName: {
+        type: String,
+        required: true
     },
-  ],
-  fileName: {
-    type: String,
-    required: true,
-  },
-})
+});
 const printingHistory = new mongoose.Schema({
   studentID: [
     {
