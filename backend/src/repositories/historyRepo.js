@@ -9,16 +9,22 @@ const historyRepo = {
     endPrintDate,
     pageAmount
   ) => {
-    const newLog = new FileHistory(
-      studentID,
-      printerID,
-      fileID,
-      startPrintDate,
-      endPrintDate,
-      pageAmount
-    )
-    const addLogToDatabase = await newLog.save() //return a promise
-    return addLogToDatabase
+    try {
+      const newLog = new FileHistory(
+        studentID,
+        printerID,
+        fileID,
+        startPrintDate,
+        endPrintDate,
+        pageAmount
+      );
+      const addLogToDatabase = await newLog.save(); //return a promise
+      return addLogToDatabase;
+    }
+    catch (err) { 
+      console.log(err);
+      throw err;
+    }
   },
 }
 
