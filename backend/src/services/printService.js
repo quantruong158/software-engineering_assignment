@@ -3,34 +3,34 @@ const loggingService = require("../services/loggingService")
 const fileService = null // require(../services/fileService)
 
 const printService = {
-    calculate_pages: async(file, config) => { 
+    calculatePages: async(file, config) => { 
         //!hard code return 
         //!implement later
         return 5;
     },
     
-    print: async(student_ID, file, printer_ID, page_amount) => { 
-        const checking_balance = await balanceService.checkBalance(student_ID, page_amount);
-        if (!checking_balance) { 
+    print: async(studentID, file, printerID, pageAmount) => { 
+        const checkingBalance = await balanceService.checkBalance(student_ID, page_amount);
+        if (!checkingBalance) { 
             throw new Error("You do not have enough balance to print")
         }
         //*const create_file_record
 
         //*const store_file
         //!implement later
-        const file_ID = 0;
-        const start_time = 0;
-        const end_time = 0;
+        const fileID = 0;
+        const startTime = 0;
+        const endTime = 0;
 
 
-        const decrease_balance = await balanceService.decrementBalance(student_ID, page_amount);
-        const create_log = await loggingService.createLog(
-            student_ID,
-            printer_ID,
-            file_ID,
-            start_time,
-            end_time,
-            page_amount
+        const decreaseBalance = await balanceService.decrementBalance(studentID, pageAmount);
+        const createLog = await loggingService.createLog(
+            studentID,
+            printerID,
+            fileID,
+            startTime,
+            endTime,
+            pageAmount
         )
     }
 
