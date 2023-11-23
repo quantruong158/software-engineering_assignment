@@ -41,39 +41,36 @@ const printSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  duplex: {
+    type: Boolean,
+    required: true,
+    default: true,
+  }
 })
 
 const fileRecord = new mongoose.Schema({
-    studentID: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        },
-    ],
-    fileName: {
-        type: String,
-        required: true
-    },
-});
+  studentID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  fileName: {
+    type: String,
+    required: true,
+  },
+})
 const printingHistory = new mongoose.Schema({
-  studentID: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
-  printerID: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Printer',
-    },
-  ],
-  fileID: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'FileRecord',
-    },
-  ],
+  studentID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  printerID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Printer',
+  },
+  fileID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'FileRecord',
+  },
   startTime: {
     type: Date,
     required: true,

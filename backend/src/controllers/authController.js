@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt"); // hash password
 const jwt = require("jsonwebtoken");
-const authService = require("../controllers/authService");
+const authService = require("../services/authService");
 const authController = {
     //Login
     loginUser: async(req,res)=>{

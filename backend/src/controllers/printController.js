@@ -1,14 +1,21 @@
-import { print } from '../services/printService'
+const { printService } = require('../services/printService')
+
+const calculatePages = async (req, res) => {
+  const file = req.file
+  const config = ''
+  const amount = await printService.calculatePages(file, config)
+  res.status(200).json({ amount })
+}
 
 const handlePrint = async (req, res) => {
   const { studentId, printerId, amount } = req.body
   const file = req.file
   try {
-    await print(studentId, file, printerId, amount)
+    await printService.print(studentId, file, printerId, amount)
     res.sendStatus(201)
   } catch (err) {
     console.error(err)
   }
 }
 
-module.exports = { handlePrint }
+module.exports = { calculatePages, handlePrint }

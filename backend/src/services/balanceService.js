@@ -5,9 +5,8 @@ const balanceService = {
         const checkBalance = userBalance >= amount;
         return checkBalance;
     },
-    decrementBalance: async (studenID, amount) => {
+    decrementBalance: async (studentID, amount) => {
         await studentRepo.decrementBalanceByID(studentID, amount);
-        return ;
     }
 }
 
