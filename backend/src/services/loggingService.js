@@ -1,7 +1,7 @@
 const historyRepo = require('../repositories/historyRepo')
 
 const loggingService = {
-  create_log: async (
+  createLog: async (
     student_ID,
     printer_ID,
     file_ID,
@@ -20,3 +20,5 @@ const loggingService = {
     return create_new_log
   },
 }
+
+module.exports = loggingService
