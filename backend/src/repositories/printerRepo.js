@@ -1,4 +1,4 @@
-const { Printer, User } = require('../repositories/model')
+const { Printer } = require('./model')
 const printerRepo = {
   // ADD 1 PRINTER
   addAPrinter: async (req) => {
