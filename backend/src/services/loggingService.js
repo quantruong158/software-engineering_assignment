@@ -1,6 +1,10 @@
 const historyRepo = require('../repositories/historyRepo')
 
 const loggingService = {
+  getLogsByStudentId: async (studentId) => {
+    const logs = await historyRepo.getLogsByStudentId(studentId)
+    return logs
+  },
   createLog: async (
     studentID,
     printerID,
@@ -16,16 +20,8 @@ const loggingService = {
       startPrintDate,
       endPrintDate,
       pageAmount
-    );
-    //*Promise error handle
-    //* If there is error log error msg and createNewLog value change to undefined
-    createNewLog.catch(function (error) { 
-      console.log(error);
-      createNewLog = undefined;
-      throw error;
-      }
-    );
-    return createNewLog;
+    )
+    return createNewLog
   },
 }
 

@@ -7,7 +7,7 @@ const fileService = {
     return await fileRepo.createFileRecord(userId, fileName)
   },
   storeFile: (file, fileId) => {
-    const dir = '../uploads'
+    const dir = 'src/uploads'
     // create folder if not exist
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir)
@@ -16,7 +16,7 @@ const fileService = {
     // get file extension
     const ext = path.extname(file.originalname)
 
-    const filePath = `../uploads/${fileId}.${ext}`
+    const filePath = `src/uploads/${fileId}.${ext}`
     const writeStream = fs.createWriteStream(filePath)
     writeStream.write(file.buffer)
     writeStream.end()

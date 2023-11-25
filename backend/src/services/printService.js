@@ -22,7 +22,7 @@ const printService = {
     // create file record and store file
     const fileID = await fileService.createFileRecord(
       studentID,
-      file.originalName
+      file.originalname
     )
     fileService.storeFile(file, fileID)
 

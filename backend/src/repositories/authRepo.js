@@ -1,20 +1,12 @@
-const bcrypt = require("bcrypt"); // hash password
-const { User } = require("../repositories/model");
+const bcrypt = require('bcrypt') // hash password
+const { User } = require('./model')
 
 const authRepo = {
-    //Login
-    findOnerepo: async(input)=>{
-            const user = await User.findOne(input);
-            return user;
-    },
-    servicebcryptrepo: async(a,b)=>{
-    const realPassword = await bcrypt.compare(
-        a,
-        b
-    )
-    return realPassword;
-}
-    
+  //Login
+  findUserByUsername: async (username) => {
+    const user = await User.findOne({ username }).exec()
+    return user
+  },
 }
 
-module.exports = authRepo;
+module.exports = authRepo

@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true } // show when it is created and updated
 )
 
-const printSchema = new mongoose.Schema({
+const printerSchema = new mongoose.Schema({
   brandName: {
     type: String,
     required: true,
@@ -41,11 +41,16 @@ const printSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
   duplex: {
     type: Boolean,
     required: true,
     default: true,
-  }
+  },
 })
 
 const fileRecord = new mongoose.Schema({
@@ -84,7 +89,7 @@ const printingHistory = new mongoose.Schema({
     required: true,
   },
 })
-let Printer = mongoose.model('Printer', printSchema)
+let Printer = mongoose.model('Printer', printerSchema)
 let User = mongoose.model('User', userSchema)
 let FileRecord = mongoose.model('FileRecord', fileRecord)
 let PrintingHistory = mongoose.model('PrintingHistory', printingHistory)
