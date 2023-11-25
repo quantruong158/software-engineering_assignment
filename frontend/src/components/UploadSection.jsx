@@ -5,7 +5,7 @@ const UploadSection = ({ selectedFile, setSelectedFile }) => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
   const allowedFileExtensions = ['.doc', '.docx', '.pdf']
-  const maxSize = 542880
+  const maxSize = 542880000
   const validateFile = (file) => {
     if (!file) {
       return false
@@ -32,7 +32,7 @@ const UploadSection = ({ selectedFile, setSelectedFile }) => {
     setErrorMessage(`${file.name}: File not allowed! Please try again.`)
     setSelectedFile(null)
   }
-  const onDeleteFile = () => {
+  const handleDeleteFile = () => {
     setSelectedFile(null)
   }
   const handleConfirm = () => {
@@ -49,7 +49,7 @@ const UploadSection = ({ selectedFile, setSelectedFile }) => {
           <div className='flex h-full w-full items-center justify-center'>
             <label
               htmlFor='dropzone-file'
-              className='flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-primary-blue bg-white group'
+              className='group flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-primary-blue bg-white'
             >
               <div className='flex flex-col items-center justify-center py-5'>
                 <svg
@@ -90,8 +90,8 @@ const UploadSection = ({ selectedFile, setSelectedFile }) => {
               <p className='text-lg'>{selectedFile.name}</p>
               <p className='text-sm text-green-500'>Uploaded successfully</p>
               <button
-                className='absolute -right-3 -top-3 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 hover:bg-red-600 text-white text-xs font-bold select-none'
-                onClick={onDeleteFile}
+                className='absolute -right-3 -top-3 flex h-5 w-5 select-none items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white hover:bg-red-600'
+                onClick={handleDeleteFile}
               >
                 X
               </button>
@@ -105,7 +105,10 @@ const UploadSection = ({ selectedFile, setSelectedFile }) => {
             <p>Allowed file types: .pdf, .docx, .doc</p>
             <p>File should not exceed 5mb</p>
           </div>
-          <button className='self-end rounded-xl bg-primary-blue px-5 py-3 hover:bg-primary-blue/90' onClick={handleConfirm}>
+          <button
+            className='self-end rounded-xl bg-primary-blue px-5 py-3 hover:bg-primary-blue/90'
+            onClick={handleConfirm}
+          >
             Confirm file
           </button>
         </div>

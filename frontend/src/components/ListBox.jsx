@@ -22,15 +22,15 @@ const ListBox = ({ selected, setSelected, list }) => {
           leaveTo='opacity-0'
         >
           <Listbox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
-            {list.map((printer, printerIdx) => (
+            {list.map((item, idx) => (
               <Listbox.Option
-                key={printerIdx}
+                key={idx}
                 className={({ active }) =>
                   `relative mx-1 cursor-default select-none rounded-xl py-2 pl-10 pr-4 ${
                     active ? 'bg-primary-blue text-white' : 'text-gray-900'
                   }`
                 }
-                value={printer}
+                value={item}
               >
                 {({ selected }) => (
                   <>
@@ -39,7 +39,7 @@ const ListBox = ({ selected, setSelected, list }) => {
                         selected ? 'font-bold' : 'font-normal'
                       }`}
                     >
-                      {printer.name}
+                      {item.name}
                     </span>
                     {selected ? (
                       <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-primary-blue'>

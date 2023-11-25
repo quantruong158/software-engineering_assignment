@@ -6,36 +6,73 @@ import Footer from './components/Footer'
 import UploadSection from './components/UploadSection'
 import PrintSection from './components/PrintSection'
 import { Route, Routes } from 'react-router-dom'
+import SSOPage from './components/SSOPage'
+import PrivateRoutes from './components/PrivateRoutes'
+import HistorySection from './components/HistorySection'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
   const [selectedFile, setSelectedFile] = useState(null)
+  const [balance, setBalance] = useState(0)
   return (
     <>
-      {!isLoggedIn ? (
-        <Login setIsLoggedIn={setIsLoggedIn} />
-      ) : (
-        <>
-          <NavBar setIsLoggedIn={setIsLoggedIn} />
-          <Routes>
-            <Route path='/home' element={<Home />} />
-            <Route
-              path='/upload'
-              element={
-                <UploadSection
-                  selectedFile={selectedFile}
-                  setSelectedFile={setSelectedFile}
-                />
-              }
-            />
-            <Route
-              path='/print'
-              element={<PrintSection file={selectedFile} setSelectedFile={setSelectedFile}/>}
-            />
-          </Routes>
-          <Footer />
-        </>
-      )}
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/sso'
+          element={<SSOPage setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          element={
+            <>
+              <NavBar setCurrentUser={setCurrentUser} />
+              <PrivateRoutes currentUser={currentUser} />
+              <Footer />
+            </>
+          }
+        >
+          <Route path='/' element={<Home />} />
+          <Route
+            path='/home'
+            element={
+              <Home
+                balance={balance}
+                setBalance={setBalance}
+                currentUser={currentUser}
+              />
+            }
+          />
+          <Route
+            path='/upload'
+            element={
+              <UploadSection
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
+              />
+            }
+          />
+          <Route
+            path='/print'
+            element={
+              <PrintSection
+                balance={balance}
+                setBalance={setBalance}
+                currentUser={currentUser}
+                file={selectedFile}
+                setSelectedFile={setSelectedFile}
+              />
+            }
+          />
+          <Route
+            path='/history'
+            element={
+              <HistorySection
+                currentUser={currentUser}
+              />
+            }
+          />
+        </Route>
+      </Routes>
     </>
   )
 }

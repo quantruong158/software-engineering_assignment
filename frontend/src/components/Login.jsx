@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate()
   const handleLogin = () => {
-    setIsLoggedIn(true)
-    navigate('/home')
+    navigate('/sso')
   }
   return (
     <main className='absolute inset-0 flex font-inter'>

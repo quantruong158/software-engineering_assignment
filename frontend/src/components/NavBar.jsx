@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ setIsLoggedIn }) => {
+const NavBar = ({ setCurrentUser }) => {
   const navigate = useNavigate()
   const handleLogout = () => {
-    setIsLoggedIn(false)
-    navigate('/')
+    setCurrentUser(null)
+    navigate('/login')
   }
   return (
     <nav className='fixed left-0 right-0 top-0 z-50 flex h-16 items-center justify-between border-b-4 border-b-secondary-blue bg-primary-blue px-3 text-white'>
