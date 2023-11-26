@@ -26,7 +26,7 @@ const HistorySection = ({ currentUser }) => {
         <h1 className='text-center text-5xl font-bold text-primary-blue'>
           HISTORY
         </h1>
-        <div className='flex h-full flex-col gap-4 rounded-lg bg-primary-blue p-3'>
+        <div className='flex h-full flex-col-reverse gap-4 rounded-lg bg-primary-blue p-3 justify-end'>
           {logs.map((log, idx) => (
             <Log key={idx} log={log} />
           ))}

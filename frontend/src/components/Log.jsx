@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const Log = ({ log }) => {
   return (
     <div className='flex flex-col gap-2 rounded-lg bg-white px-5 py-2 sm:grid sm:grid-cols-5 sm:gap-10'>
@@ -14,11 +16,13 @@ const Log = ({ log }) => {
       </p>
       <p>
         <span>Start time:</span>{' '}
-        <span className='font-semibold'>{log.startTime}</span>
+        <span className='font-semibold'>
+          {moment(log.startTime).format('YYYY-MM-DD HH:mm:ss')}
+        </span>
       </p>
       <p>
         <span>End time:</span>{' '}
-        <span className='font-semibold'>{log.endTime}</span>
+        <span className='font-semibold'>{moment(log.endTime).format('YYYY-MM-DD HH:mm:ss')}</span>
       </p>
       <p>
         <span>Number of Page:</span>{' '}
